@@ -44,7 +44,7 @@ class ApplicationController < Sinatra::Base
     users.to_json
   end
 
-  get "/users" do 
+  post "/users" do 
     users = User.create(
       name: params[:name],
       user_id: params[:user_id],
@@ -53,6 +53,20 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
+  patch "/users/:id" do
+    user = User.find(params[:id])
+    user.update(
+      name: params[:name],
+      user_id: params[:user_id],
+      age: params[:age]
+    )
+    user.to_json
+  end
 
+  # delete "/users/:id" do
+  #   user = User.find(params[:id])
+  #   user.destroy
+  #   "User deleted successfully"
+  # end
 end
 
