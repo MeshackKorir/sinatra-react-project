@@ -63,10 +63,10 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
-  # delete "/users/:id" do
-  #   user = User.find(params[:id])
-  #   user.destroy
-  #   "User deleted successfully"
-  # end
+  delete "/users/:id" do
+    user = User.find(params[:id])
+    user.destroy
+    "User deleted successfully"
+  end
 end
 
