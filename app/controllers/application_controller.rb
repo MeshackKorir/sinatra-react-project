@@ -2,15 +2,19 @@ require_relative "../models/book"
 require_relative "../models/user"
 
 class ApplicationController < Sinatra::Base
-  
   # Add routes here
-  # books
 
-  get "/books" do 
+  # Root route
+  get "/" do
+    "Hello, welcome!"
+  end
+
+  # Books routes
+  get "/books" do
     books = Book.all
     books.to_json
   end
-  
+
   post "/books" do
     book = Book.create(
       name: params[:name],
@@ -38,17 +42,17 @@ class ApplicationController < Sinatra::Base
     "Book deleted successfully"
   end
 
-  # users
+  # Users routes
   get "/users" do
     users = User.all
     users.to_json
   end
 
-  post "/users" do 
-    users = User.create(
+  post "/users" do
+    user = User.create(
       name: params[:name],
       user_id: params[:user_id],
-      age: params[:age],
+      age: params[:age]
     )
     user.to_json
   end
@@ -69,4 +73,3 @@ class ApplicationController < Sinatra::Base
     "User deleted successfully"
   end
 end
-
