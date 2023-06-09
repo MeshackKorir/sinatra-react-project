@@ -1,5 +1,5 @@
-require_relative "book"
-require_relative "user"
+require_relative "../models/book"
+require_relative "../models/user"
 
 class ApplicationController < Sinatra::Base
   
@@ -37,6 +37,22 @@ class ApplicationController < Sinatra::Base
     book.destroy
     "Book deleted successfully"
   end
+
+  # users
+  get "/users" do
+    users = User.all
+    users.to_json
   end
+
+  get "/users" do 
+    users = User.create(
+      name: params[:name],
+      user_id: params[:user_id],
+      age: params[:age],
+    )
+    user.to_json
+  end
+
+
 end
 
