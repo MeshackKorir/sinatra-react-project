@@ -1,7 +1,11 @@
+require_relative "book"
+require_relative "user"
+
 class ApplicationController < Sinatra::Base
   
   # Add routes here
   # books
+
   get "/books" do 
     books = Book.all
     books.to_json
@@ -34,5 +38,5 @@ class ApplicationController < Sinatra::Base
     "Book deleted successfully"
   end
   end
-  
+end
 
